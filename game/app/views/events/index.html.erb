@@ -1,0 +1,16 @@
+<h1>GameZone Updates</h1>
+<table class="table">
+<% @events.each do |event| %>
+  <tr>
+   <div> <h4><%= event.article %></h4></div>
+    <p><%= event.description %></p>
+   <P> updated at <%= event.data %></p>
+   <div> <%= link_to 'Show', event,  { :class => "label label-success"} %>
+    </div>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Event', new_event_path %>

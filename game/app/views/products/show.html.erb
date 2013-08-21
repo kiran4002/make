@@ -1,0 +1,44 @@
+
+
+<% content_for :head do %>
+  <%= tag :meta, property: "fb:app_id", content: ENV["FACEBOOK_APP_ID"] %>
+  <%= tag :meta, property: "og:site_name", content: "gamesign" %>
+  <%= tag :meta, property: "og:type", content: "gamesign:game" %>
+  <%= tag :meta, property: "og:title", content: @product.name %>
+  <%= tag :meta, property: "og:url", content: product_url(@product) %>
+  <%= tag :meta, property: "og:image", content: request.protocol + request.host_with_port + image_path(@product.image) %>
+<% end %>
+
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  
+  <h1><%= @product.name %></h1>
+</p>
+
+<p>
+  
+  <%= image_tag( @product.image , :size => "250x125") %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @product.description %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= number_to_currency @product.price.to_d/100 %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+
+<h2>Comments</h2>
+
+<%= render "comments/comments" %>
+<h3>make a comment</h3>
+<%= render "comments/form" %>
